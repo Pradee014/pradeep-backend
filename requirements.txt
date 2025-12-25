@@ -1,1 +1,2 @@
-# Managed by uv
+fastapi
+uvicorn[standard]
