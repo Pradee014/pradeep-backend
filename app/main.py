@@ -5,8 +5,8 @@ app = FastAPI()
 
 # Allow your specific Vercel frontend to access the API
 origins = [
-    "http://localhost:3000",  # For local testing
-    "https://portfolio-frontend-abc.vercel.app" # <--- REPLACE with your actual Vercel URL
+    "http://localhost:3000",
+    "https://portfolio-frontend-abc.vercel.app" # <--- Remember to update this later!
 ]
 
 app.add_middleware(
@@ -16,6 +16,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# --- ADD THIS ROUTE ---
+@app.get("/")
+def read_root():
+    return {"message": "Zero-Cost Enterprise RAG is live!"}
 
 @app.get("/health")
 def health_check():
