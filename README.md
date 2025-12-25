@@ -5,7 +5,7 @@ This is the backend API service for Pradeep's personal portfolio. It is built wi
 ## 🚀 Tech Stack
 
 - **Backend Framework**: [FastAPI](https://fastapi.tiangolo.com/) (Python)
-- **Package Manager**: [uv](https://github.com/astral-sh/uv) (Fast Python package installer)
+- **Package Manager**: pip (Standard Python package installer)
 - **Deployment Platform**: [Render](https://render.com/)
 - **Frontend Host**: [Vercel](https://vercel.com/) (Connects to this API)
 - **Database**: [Pinecone](https://www.pinecone.io/) (Planned for Vector/RAG operations)
@@ -20,7 +20,7 @@ Follow these steps to get the backend running locally on your machine.
 ### Prerequisites
 
 - Python 3.11+ installed
-- [uv](https://github.com/astral-sh/uv) installed (Recommended replacement for pip)
+
 
 ### 1. Clone & Navigate
 ```bash
@@ -29,21 +29,20 @@ cd pradeep-backend
 ```
 
 ### 2. Install Dependencies
-This project uses `uv` for blazing fast dependency management.
+Create a virtual environment and install the required packages:
 
 ```bash
 # Create a virtual environment
-uv venv
+python3 -m venv .venv
 
 # Activate the virtual environment
+# On macOS/Linux:
 source .venv/bin/activate
+# On Windows:
+# .venv\Scripts\activate
 
-# Install dependencies from pyproject.toml
-uv pip install -e .
-```
-*Alternatively, if you must use standard pip:*
-```bash
-pip install -e .
+# Install dependencies from requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 3. Run the Server
@@ -75,4 +74,4 @@ origins = [
 
 ### Deployment
 This project is configured for deployment on **Render**.
- Ensure looking into build commands if required (usually `uv sync` and start command `uvicorn app.main:app --host 0.0.0.0 --port 10000`).
+Ensure you set the Build Command to `pip install -r requirements.txt` and Start Command to `uvicorn app.main:app --host 0.0.0.0 --port 10000`.
