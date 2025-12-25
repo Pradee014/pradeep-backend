@@ -6,7 +6,7 @@ app = FastAPI()
 # Allow your specific Vercel frontend to access the API
 origins = [
     "http://localhost:3000",
-    "https://portfolio-frontend-abc.vercel.app" # <--- Remember to update this later!
+    "https://pradeep-frontend-six.vercel.app/" # <--- Remember to update this later!
 ]
 
 app.add_middleware(
