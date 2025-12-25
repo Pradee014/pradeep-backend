@@ -1,2 +1,10 @@
 fastapi
 uvicorn[standard]
+langchain
+langgraph
+pinecone-client
+openai
+python-dotenv
+pydantic-settings
+langchain-openai
+langchain-pinecone
