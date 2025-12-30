@@ -1,17 +1,19 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.core.config import settings
 
 app = FastAPI()
 
-# Allow your specific Vercel frontend to access the API
+# Allow any localhost port for development
 origins = [
     "http://localhost:3000",
-    "https://portfolio-frontend-abc.vercel.app" # <--- Remember to update this later!
+    settings.FRONTEND_URL, 
 ]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
+    allow_origin_regex="https?://localhost:\d+", # Allow any localhost port
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -25,3 +27,6 @@ def read_root():
 @app.get("/health")
 def health_check():
     return {"status": "awake", "message": "Backend is ready"}
+
+from app.api import chat
+app.include_router(chat.router, prefix="/api")

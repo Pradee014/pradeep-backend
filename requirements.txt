@@ -1,10 +1,11 @@
 fastapi
-uvicorn[standard]
-langchain
-langgraph
-pinecone-client
-openai
-python-dotenv
+uvicorn
+pydantic
 pydantic-settings
 langchain-openai
 langchain-pinecone
+langgraph
+ai-sdk-python
+python-dotenv
+ollama
+
