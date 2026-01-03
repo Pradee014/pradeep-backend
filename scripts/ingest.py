@@ -12,17 +12,17 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 DATA_PATH = "data"
-INDEX_NAME = "portfolio-rag"
+
 
 def ensure_index_exists():
     """Create the Pinecone index if it doesn't exist."""
     pc = Pinecone(api_key=settings.PINECONE_API_KEY.get_secret_value())
     
     existing_indexes = pc.list_indexes().names()
-    if INDEX_NAME not in existing_indexes:
-        logger.info(f"✨ Creating index '{INDEX_NAME}' with dimensions={settings.EMBEDDING_DIMENSIONS}...")
+    if settings.PINECONE_INDEX_NAME not in existing_indexes:
+        logger.info(f"✨ Creating index '{settings.PINECONE_INDEX_NAME}' with dimensions={settings.EMBEDDING_DIMENSIONS}...")
         pc.create_index(
-            name=INDEX_NAME,
+            name=settings.PINECONE_INDEX_NAME,
             dimension=settings.EMBEDDING_DIMENSIONS, # 512
             metric="cosine",
             spec=ServerlessSpec(
@@ -31,11 +31,11 @@ def ensure_index_exists():
             )
         )
         # Wait for index to be ready
-        while not pc.describe_index(INDEX_NAME).status['ready']:
+        while not pc.describe_index(settings.PINECONE_INDEX_NAME).status['ready']:
             time.sleep(1)
-        logger.info(f"✅ Index '{INDEX_NAME}' is ready.")
+        logger.info(f"✅ Index '{settings.PINECONE_INDEX_NAME}' is ready.")
     else:
-        logger.info(f"✅ Index '{INDEX_NAME}' already exists.")
+        logger.info(f"✅ Index '{settings.PINECONE_INDEX_NAME}' already exists.")
 
 def ingest_data():
     logger.info(f"🚀 Starting ingestion from {DATA_PATH}...")
