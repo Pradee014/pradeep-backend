@@ -22,7 +22,7 @@ def get_vector_store():
     # Initialize Vector Store
     # We assume the index already exists as per user confirmation
     vector_store = PineconeVectorStore(
-        index_name="portfolio-rag", # Default name, or could be in settings
+        index_name=settings.PINECONE_INDEX_NAME,
         embedding=embeddings,
         pinecone_api_key=settings.PINECONE_API_KEY.get_secret_value()
     )

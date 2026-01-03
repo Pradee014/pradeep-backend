@@ -12,12 +12,15 @@ class Settings(BaseSettings):
     OLLAMA_API_KEY: SecretStr
     
     # External Services
-    OLLAMA_BASE_URL: str = "https://api.ollamacloud.com"  # Default generic URL, user to override
+    FRONTEND_URL: str
+    OLLAMA_BASE_URL: str = "https://ollama.com"  # Default generic URL, user to override
+    OLLAMA_MODEL: str = "gpt-oss:120b-cloud"
     PINECONE_ENV: str = "us-east-1" # Example default
     
     # Paths / Constants
     EMBEDDING_MODEL: str = "text-embedding-3-small"
     EMBEDDING_DIMENSIONS: int = 512
+    PINECONE_INDEX_NAME: str = "myportfolio-agent"
 
     class Config:
         env_file = ".env"

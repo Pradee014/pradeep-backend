@@ -6,9 +6,9 @@ This is the backend API service for Pradeep's personal portfolio. It is built wi
 
 - **Backend Framework**: [FastAPI](https://fastapi.tiangolo.com/) (Python)
 - **Package Manager**: pip (Standard Python package installer)
-- **Deployment Platform**: [Render](https://render.com/) (Free Tier - 512MB RAM Limit)
-- **Frontend Host**: [Vercel](https://vercel.com/) (Separate Repository)
-- **Database**: [Pinecone](https://www.pinecone.io/) (Vector/RAG operations)
+- **Deployment Platform**: [Render](https://render.com/)
+- **Frontend Host**: [Vercel](https://vercel.com/) (Connects to this API)
+- **Database**: [Pinecone](https://www.pinecone.io/) (Planned for Vector/RAG operations)
 - **RAG Capabilities**:
   - **Tools**: LinkedIn, Grok/Ollama Cloud, Gmail, Calendar
   - **Agent**: Integrated Chatbot for portfolio interaction
